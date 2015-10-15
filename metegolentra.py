@@ -51,50 +51,40 @@ class Jugador(pilasengine.actores.Actor):
             self.x = 265
 
 
-#~ class Ladrillo(pilasengine.actores.Actor):
-#~ 
-    #~ def iniciar(self):
-        #~ self.imagen = 'imagenes/ladrillo.png'
+class Arco(pilasengine.actores.Actor):
+    def iniciar(self):
+        self.imagen = 'imagenes/arco.png'
         #~ self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 60, 30, False)
 		
 
-#~ def crear_ladrillo(grupo_ladrillos, x, y):
-    #~ ladrillo = Ladrillo(pilas)
-    #~ ladrillo.x = x
-    #~ ladrillo.y = y
-    #~ grupo_ladrillos.agregar(ladrillo)
+def crear_arco(grupo_arcos, x, y):
+    arco = Arco(pilas)
+    arco.x = x
+    arco.y = y
+    grupo_arcos.agregar(arco)
 
 
-#~ def eliminar_ladrillo(pelota, ladrillo):
-    #~ ladrillo.eliminar()
-#~ 
 def empujar_pelota(jugador, pelota):
     pelota.empujar((pelota.x - jugador.x) / 5.0, 30)
 
-
+# Creamos un jugador
 jugador = Jugador(pilas)
 
+# El arco es un grupo por si en algún momento 
+# el juego cambia y hay dos arcos
+arcos = pilas.actores.Grupo()
+crear_arco(arcos, 0, 230)
 
-#~ ladrillos = pilas.actores.Grupo()
-#~ 
-#~ crear_ladrillo(ladrillos, -200, 100)
-#~ crear_ladrillo(ladrillos, -100, 100)
-#~ crear_ladrillo(ladrillos,    0, 100)
-#~ crear_ladrillo(ladrillos,  100, 100)
-#~ crear_ladrillo(ladrillos,  200, 100)
-
-# ladrillos.aprender(pilas.habilidades.Arrastrable)
-
-
+# Ahora se mete la bocha
 pelota = pilas.actores.Pelota()
 pelota.figura.escala_de_gravedad = 0
 pelota.empujar(0, -10)
-pelota.aprender(pilas.habilidades.Arrastrable)
+# La línea siguiente es por si tiramos con el dedo desde el pad
+#pelota.aprender(pilas.habilidades.Arrastrable)
 pelota.imagen = 'imagenes/pelota.png'
-
 pilas.colisiones.agregar(jugador, pelota, empujar_pelota)
-#~ pilas.colisiones.agregar(pelota, ladrillos, eliminar_ladrillo)
-
+#~ pilas.colisiones.agregar(pelota, arcos, eliminar_arco)
+# Para que la bocha no se vaya nunca
 #~ pilas.fisica.eliminar_suelo()
 
 pilas.ejecutar()
