@@ -25,27 +25,30 @@
 import pilasengine
 
 pilas = pilasengine.iniciar()
-fondo = pilas.fondos.Pasto()
+fondo = pilas.fondos.Fondo()
+fondo.imagen = pilas.imagenes.cargar('imagenes/cancha.png')
 
-#~ class Paleta(pilasengine.actores.Actor):
-#~ 
-    #~ def iniciar(self):
-        #~ self.imagen = 'imagenes/paleta.png'
-        #~ self.x = 0
-        #~ self.y = -200
-        #~ self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
-#~ 
-    #~ def actualizar(self):
-        #~ if self.pilas.control.izquierda:
-            #~ self.x -= 5
-#~ 
-        #~ elif self.pilas.control.derecha:
-            #~ self.x += 5
-#~ 
-        #~ if self.x <= -265:
-            #~ self.x = -265
-        #~ elif self.x >= 265:
-            #~ self.x = 265
+
+
+class Paleta(pilasengine.actores.Actor):
+
+    def iniciar(self):
+        self.imagen = 'imagenes/paleta.png'
+        self.x = 0
+        self.y = -200
+        self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
+
+    def actualizar(self):
+        if self.pilas.control.izquierda:
+            self.x -= 5
+
+        elif self.pilas.control.derecha:
+            self.x += 5
+
+        if self.x <= -265:
+            self.x = -265
+        elif self.x >= 265:
+            self.x = 265
 
 
 #~ class Ladrillo(pilasengine.actores.Actor):
@@ -64,12 +67,12 @@ fondo = pilas.fondos.Pasto()
 
 #~ def eliminar_ladrillo(pelota, ladrillo):
     #~ ladrillo.eliminar()
+#~ 
+def empujar_pelota(paleta, pelota):
+    pelota.empujar((pelota.x - paleta.x) / 5.0, 10)
 
-#~ def empujar_pelota(paleta, pelota):
-    #~ pelota.empujar((pelota.x - paleta.x) / 5.0, 10)
 
-
-#~ paleta = Paleta(pilas)
+paleta = Paleta(pilas)
 
 
 #~ ladrillos = pilas.actores.Grupo()
@@ -89,7 +92,7 @@ pelota.empujar(0, -10)
 pelota.aprender(pilas.habilidades.Arrastrable)
 pelota.imagen = 'imagenes/pelota.png'
 
-#~ pilas.colisiones.agregar(paleta, pelota, empujar_pelota)
+pilas.colisiones.agregar(paleta, pelota, empujar_pelota)
 #~ pilas.colisiones.agregar(pelota, ladrillos, eliminar_ladrillo)
 
 #~ pilas.fisica.eliminar_suelo()
