@@ -34,8 +34,8 @@ class Jugador(pilasengine.actores.Actor):
 
     def iniciar(self):
         self.imagen = 'imagenes/jugador.png'
-        self.x = 0
-        self.y = -200
+        self.x = -200
+        self.y = -230
         self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
 
     def actualizar(self):
@@ -49,13 +49,24 @@ class Jugador(pilasengine.actores.Actor):
             self.x = -265
         elif self.x >= 265:
             self.x = 265
+            
+        if self.pilas.control.abajo:
+            self.y -= 5
+
+        elif self.pilas.control.arriba:
+            self.y += 5
+
+        if self.y <= -265:
+            self.y = -265
+        elif self.y >= 265:
+            self.y = 265    
 
 
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
         self.imagen = 'imagenes/arco.png'
-        #~ self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 60, 30, False)
-		
+        self.figura_de_colision = pilas.fisica.Rectangulo(20, 0, 260, 29, False)
+        
 
 def crear_arco(grupo_arcos, x, y):
     arco = Arco(pilas)
@@ -66,6 +77,11 @@ def crear_arco(grupo_arcos, x, y):
 
 def empujar_pelota(jugador, pelota):
     pelota.empujar((pelota.x - jugador.x) / 5.0, 30)
+    
+def gol(pelota, arcos):
+    pelota.eliminar()
+    mono = pilas.actores.Mono()
+    mono.decir('Golllll!!!!')
 
 # Creamos un jugador
 jugador = Jugador(pilas)
@@ -77,12 +93,13 @@ crear_arco(arcos, 0, 230)
 
 # Ahora se mete la bocha
 pelota = pilas.actores.Pelota()
-pelota.figura.escala_de_gravedad = 0
+pelota.x = -200
+#pelota.figura.escala_de_gravedad = 0
 pelota.empujar(0, -10)
-# La línea siguiente es por si tiramos con el dedo desde el pad
-#pelota.aprender(pilas.habilidades.Arrastrable)
-pelota.imagen = 'imagenes/pelota.png'
+#pelota.imagen = 'imagenes/pelota.png'
+#pelota.radio_de_colision = 12
 pilas.colisiones.agregar(jugador, pelota, empujar_pelota)
+pilas.colisiones.agregar(pelota, arcos, gol)
 #~ pilas.colisiones.agregar(pelota, arcos, eliminar_arco)
 # Para que la bocha no se vaya nunca
 #~ pilas.fisica.eliminar_suelo()
