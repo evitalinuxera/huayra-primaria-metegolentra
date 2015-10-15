@@ -69,10 +69,10 @@ class Jugador(pilasengine.actores.Actor):
     #~ ladrillo.eliminar()
 #~ 
 def empujar_pelota(jugador, pelota):
-    pelota.empujar((pelota.x - jugador.x) / 5.0, 10)
+    pelota.empujar((pelota.x - jugador.x) / 5.0, 30)
 
 
-jugador = jugador(pilas)
+jugador = Jugador(pilas)
 
 
 #~ ladrillos = pilas.actores.Grupo()
