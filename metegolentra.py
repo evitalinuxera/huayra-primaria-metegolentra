@@ -30,10 +30,10 @@ fondo.imagen = pilas.imagenes.cargar('imagenes/cancha.png')
 
 
 
-class Paleta(pilasengine.actores.Actor):
+class Jugador(pilasengine.actores.Actor):
 
     def iniciar(self):
-        self.imagen = 'imagenes/paleta.png'
+        self.imagen = 'imagenes/jugador.png'
         self.x = 0
         self.y = -200
         self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
@@ -68,11 +68,11 @@ class Paleta(pilasengine.actores.Actor):
 #~ def eliminar_ladrillo(pelota, ladrillo):
     #~ ladrillo.eliminar()
 #~ 
-def empujar_pelota(paleta, pelota):
-    pelota.empujar((pelota.x - paleta.x) / 5.0, 10)
+def empujar_pelota(jugador, pelota):
+    pelota.empujar((pelota.x - jugador.x) / 5.0, 10)
 
 
-paleta = Paleta(pilas)
+jugador = jugador(pilas)
 
 
 #~ ladrillos = pilas.actores.Grupo()
@@ -92,7 +92,7 @@ pelota.empujar(0, -10)
 pelota.aprender(pilas.habilidades.Arrastrable)
 pelota.imagen = 'imagenes/pelota.png'
 
-pilas.colisiones.agregar(paleta, pelota, empujar_pelota)
+pilas.colisiones.agregar(jugador, pelota, empujar_pelota)
 #~ pilas.colisiones.agregar(pelota, ladrillos, eliminar_ladrillo)
 
 #~ pilas.fisica.eliminar_suelo()
