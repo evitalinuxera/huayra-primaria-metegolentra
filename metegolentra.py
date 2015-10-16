@@ -35,7 +35,7 @@ class Jugador(pilasengine.actores.Actor):
     def iniciar(self):
         self.imagen = 'imagenes/jugador.png'
         self.x = -200
-        self.y = -230
+        self.y = -220
         self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
 
     def actualizar(self):
@@ -45,10 +45,10 @@ class Jugador(pilasengine.actores.Actor):
         elif self.pilas.control.derecha:
             self.x += 5
 
-        if self.x <= -265:
-            self.x = -265
-        elif self.x >= 265:
-            self.x = 265
+        if self.x <= -305:
+            self.x = -305
+        elif self.x >= 305:
+            self.x = 305
             
         if self.pilas.control.abajo:
             self.y -= 5
@@ -65,7 +65,8 @@ class Jugador(pilasengine.actores.Actor):
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
         self.imagen = 'imagenes/arco.png'
-        self.figura_de_colision = pilas.fisica.Rectangulo(20, 0, 260, 29, False)
+        # Si cambio la bocha hay que cambiar la colisión del arco
+        self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 200, 29, False)
         
 
 def crear_arco(grupo_arcos, x, y):
@@ -80,9 +81,10 @@ def empujar_pelota(jugador, pelota):
     
 def gol(pelota, arcos):
     pelota.eliminar()
+    #Un festejo cualquiera, reemplazar
     mono = pilas.actores.Mono()
     mono.decir('Golllll!!!!')
-
+   
 # Creamos un jugador
 jugador = Jugador(pilas)
 
@@ -94,13 +96,19 @@ crear_arco(arcos, 0, 230)
 # Ahora se mete la bocha
 pelota = pilas.actores.Pelota()
 pelota.x = -200
+
+#Con este agregado de abajo la pelota no frena nunca
 #pelota.figura.escala_de_gravedad = 0
 pelota.empujar(0, -10)
+
+#Acá con una pelota más chica y más acorde
+#pero hay que cambiar el actor
 #pelota.imagen = 'imagenes/pelota.png'
 #pelota.radio_de_colision = 12
 pilas.colisiones.agregar(jugador, pelota, empujar_pelota)
 pilas.colisiones.agregar(pelota, arcos, gol)
-#~ pilas.colisiones.agregar(pelota, arcos, eliminar_arco)
+
+#~ pilas.colisiones.agregar(pelota, barrera, pega_en_la_barrera)
 # Para que la bocha no se vaya nunca
 #~ pilas.fisica.eliminar_suelo()
 
