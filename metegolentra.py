@@ -62,6 +62,7 @@ class Jugador(pilasengine.actores.Actor):
         elif self.y >= 265:
             self.y = 265    
 
+# Comentario para que el archivo cambie 
 
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
