@@ -39,6 +39,7 @@ class Jugador(pilasengine.actores.Actor):
         self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
 
     def actualizar(self):
+	# comentario
         if self.pilas.control.izquierda:
             self.x -= 5
 
