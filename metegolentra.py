@@ -28,7 +28,7 @@ pilas = pilasengine.iniciar()
 fondo = pilas.fondos.Fondo()
 fondo.imagen = pilas.imagenes.cargar('imagenes/cancha.png')
 
-
+# SALUDOS PROFEE!!! By: Agustin Rivero
 
 class Jugador(pilasengine.actores.Actor):
 
