@@ -63,10 +63,11 @@ class Jugador(pilasengine.actores.Actor):
             self.y = 265    
 
 # Comentario para que el archivo cambie 
+# Hola profe hasta acá llegue carina jajaja
 
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
-        self.imagen = 'imagenes/arcofinal.png'# modifique la imagen por otra.
+        self.imagen = 'imagenes/arco.png'
         # Si cambio la bocha hay que cambiar la colisión del arco
         self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 200, 29, False)
         
