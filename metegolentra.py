@@ -28,7 +28,7 @@ pilas = pilasengine.iniciar()
 fondo = pilas.fondos.Fondo()
 fondo.imagen = pilas.imagenes.cargar('imagenes/cancha.png')
 
-# SALUDOS PROFEE!!! By: Agustin Rivero
+
 
 class Jugador(pilasengine.actores.Actor):
 
@@ -66,7 +66,7 @@ class Jugador(pilasengine.actores.Actor):
 
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
-        self.imagen = 'imagenes/arco.png'
+        self.imagen = 'imagenes/arcofinal.png'# modifique la imagen por otra.
         # Si cambio la bocha hay que cambiar la colisión del arco
         self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 200, 29, False)
         
