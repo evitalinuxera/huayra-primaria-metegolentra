@@ -60,11 +60,9 @@ class Jugador(pilasengine.actores.Actor):
         if self.y <= -265:
             self.y = -265
         elif self.y >= 265:
-            self.y = 265    
-
-# Comentario para que el archivo cambie 
+            self.y = 265   
 # Hola profe hasta acá llegue carina jajaja
-
+# Hola profe ya modifique Cecilia Roldan 
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
         self.imagen = 'imagenes/arco.png'
