@@ -71,8 +71,8 @@ class Arco(pilasengine.actores.Actor):
         self.imagen = 'imagenes/arco.png'
         # Si cambio la bocha hay que cambiar la colisión del arco
         self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 200, 29, False)
-        
 
+# Hola a todos ... Veronica.
 def crear_arco(grupo_arcos, x, y):
     arco = Arco(pilas)
     arco.x = x
