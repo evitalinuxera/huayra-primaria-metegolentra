@@ -73,6 +73,7 @@ class Arco(pilasengine.actores.Actor):
         self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 200, 29, False)
 
 # Hola a todos ... Veronica.
+# Holassssssss
 def crear_arco(grupo_arcos, x, y):
     arco = Arco(pilas)
     arco.x = x
