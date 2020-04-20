@@ -29,7 +29,7 @@ fondo = pilas.fondos.Fondo()
 fondo.imagen = pilas.imagenes.cargar('imagenes/cancha.png')
 
 
-
+#hola profe soy "Melanie Duarte"
 class Jugador(pilasengine.actores.Actor):
 
     def iniciar(self):
