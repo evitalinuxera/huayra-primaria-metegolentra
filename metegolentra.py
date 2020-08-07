@@ -29,7 +29,6 @@ fondo = pilas.fondos.Fondo()
 fondo.imagen = pilas.imagenes.cargar('imagenes/cancha.png')
 
 
-#hola profe soy "Melanie Duarte"
 class Jugador(pilasengine.actores.Actor):
 
     def iniciar(self):
@@ -39,7 +38,6 @@ class Jugador(pilasengine.actores.Actor):
         self.figura_de_colision = pilas.fisica.Rectangulo(0,0, 100, 20, False)
 
     def actualizar(self):
-	# comentario
         if self.pilas.control.izquierda:
             self.x -= 5
 
@@ -61,21 +59,18 @@ class Jugador(pilasengine.actores.Actor):
             self.y = -265
         elif self.y >= 265:
             self.y = 265   
-# Hola profe hasta acá llegue carina jajaja
-# Hola profe ya modifique Cecilia Roldan 
+
 class Arco(pilasengine.actores.Actor):
     def iniciar(self):
         self.imagen = 'imagenes/arco.png'
         # Si cambio la bocha hay que cambiar la colisión del arco
         self.figura_de_colision = pilas.fisica.Rectangulo(0, 0, 200, 29, False)
         
-
 def crear_arco(grupo_arcos, x, y):
     arco = Arco(pilas)
     arco.x = x
     arco.y = y
     grupo_arcos.agregar(arco)
-
 
 def empujar_pelota(jugador, pelota):
     pelota.empujar((pelota.x - jugador.x) / 5.0, 30)
@@ -114,4 +109,3 @@ pilas.colisiones.agregar(pelota, arcos, gol)
 #~ pilas.fisica.eliminar_suelo()
 
 pilas.ejecutar()
-
